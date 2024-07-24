@@ -1,0 +1,50 @@
+<!--
+Build an HTML page that prompts the user for an integer number. When the user enters an integer value
+n and clicks a button the page displays as an HTML element (no alerts) all prime numbers that are less
+than or equal to n. A number is prime if its is divisible by 1 and itself. The first prime number is 2.
+-->
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exercise 1</title>
+        <script>
+            function prime(num) {
+                // 1 is not a prime number
+                if (num <= 1) return false;
+                for (let i = 2; i <= Math.sqrt(num); i++) {
+                    if (num % i === 0) return false; // if its 0 its not a prime
+                }
+                return true;
+            }
+
+
+            // finds the prime numbers less than or equal to N
+            function findPrime() {
+                const n = parseInt(document.getElementById("Input").value);
+                const primes = [];
+                for (let i = 2; i <= n; i++) {
+                    if(prime(i)) {
+                        primes.push(i);
+                    }
+                }
+                document.getElementById("result").innerText = primes.join(', ');
+            }
+
+        </script>
+    </head>
+    <body>
+
+        <h2>Enter a number</h2>
+
+        <input type="number" id="Input" required>
+
+        <button onclick="findPrime()">Find Primes</button>
+
+        <h2>The Prime Numbers:</h2>
+
+        <p id="result"></p>
+
+    </body>
+</html>
